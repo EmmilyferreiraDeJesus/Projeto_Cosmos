@@ -38,10 +38,11 @@ body{
     align-items: center;
     font-size: 20px;
     cursor: pointer;
+    font-family: 'Open Sans', sans-serif;;
 }
 
 .email :hover {
-    color:blue;
+    color: #5271FF;;
 }
 
 .email a{
@@ -83,24 +84,24 @@ body{
 }
 
 /*Conteudo do container principal*/
-.container-conteudo-principal {
+.conteudo-principal {
     margin-left: 10%;
     margin-top: 10%;
     color: white;
     font-size: 25px;
 }
 
-.container-conteudo-principal h1 {
+.conteudo-principal h1 {
     margin-bottom: 45px;
     font-family: 'Oswald', sans-serif;
 }
 
-.container-conteudo-principal p {
+.conteudo-principal p {
     margin-bottom: 45px;
     font-family: 'Open Sans', sans-serif;
 }
 
-.container-conteudo-principal button {
+.conteudo-principal button {
     background-color: #0D3E89;
     color: white;
     border: none;
@@ -110,9 +111,34 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
-.container-conteudo-principal a {
+.conteudo-principal a {
     text-decoration: none;
     color: white;
 }
 
 /*Sobre o Blog*/
+.container-sobre-blog {
+    margin-top: 10% ;
+    margin-left: 10%;
+    width: 80vw;
+}
+
+.container-sobre-blog h1 {
+    margin-bottom: 45px;
+    color: #5271FF; ;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+}
+
+.conteudo-blog {
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    display: flex;
+    gap: 10%;
+}
+
+.conteudo-blog-text {
+    text-align: justify;
+    width: 50%;
+}
