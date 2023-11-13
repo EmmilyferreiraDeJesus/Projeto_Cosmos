@@ -1,0 +1,118 @@
+/*Fontes*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+/*Open Sans Ligth, Regular e Medium*/
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #001832;
+    overflow-x: hidden;
+}
+
+/*Container com a imagem principal*/
+.container-principal {
+    background-image: linear-gradient(rgba(0, 0, 0, .10), rgba(0, 0, 0, .10)100%), url(../assets/Ceu_Noturno.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+/*Header*/
+.header {
+    width: 100%;
+    height: 150px;
+}
+
+.email span {
+    padding-right: 5px;
+}
+
+.email {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.email :hover {
+    color:blue;
+}
+
+.email a{
+    text-decoration: none;
+    color: white;
+}
+
+.material-symbols-outlined {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.logo {
+    width: 150px;
+    height: 85px;
+}
+
+.header .container {
+    width: 88%;
+    height: 100%;
+    margin: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+}
+
+.header .container li {
+    display: inline;
+    padding: 0 15px;
+}
+
+.header .container li a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+}
+
+/*Conteudo do container principal*/
+.container-conteudo-principal {
+    margin-left: 10%;
+    margin-top: 10%;
+    color: white;
+    font-size: 25px;
+}
+
+.container-conteudo-principal h1 {
+    margin-bottom: 45px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.container-conteudo-principal p {
+    margin-bottom: 45px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container-conteudo-principal button {
+    background-color: #0D3E89;
+    color: white;
+    border: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 2px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container-conteudo-principal a {
+    text-decoration: none;
+    color: white;
+}
+
+/*Sobre o Blog*/
