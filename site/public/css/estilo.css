@@ -116,7 +116,7 @@ body{
     color: white;
 }
 
-/*Sobre o Blog*/
+/*Seção sobre o Blog*/
 .container-sobre-blog {
     margin-top: 10% ;
     margin-left: 10%;
@@ -141,4 +141,24 @@ body{
 .conteudo-blog-text {
     text-align: justify;
     width: 50%;
+}
+
+/*Seção montanhas e frase*/
+.container-imagem-montanhas {
+    width: 100vw;
+    height: 60vh;
+    background-image: url(../assets/Ceu_Noturno_Montanhas.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    padding: 5px;
+}
+
+.container-imagem-montanhas p {
+    margin-top: 8%;
+    margin-left: 10%;
+    font-size: 22px;
 }
