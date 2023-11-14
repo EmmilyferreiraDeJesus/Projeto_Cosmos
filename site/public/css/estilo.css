@@ -214,11 +214,16 @@ body{
     font-size: 20px;
 }
 
+.rodape a {
+    text-decoration: none;
+    margin-top: 5%;
+    margin-left: 2%;
+}
+
 .rodape img {
     width: 135px;
     height: 80px;
-    margin-top: 6%;
-    margin-left: 2%;
+    cursor: pointer;
 }
 
 .rodape-links {
