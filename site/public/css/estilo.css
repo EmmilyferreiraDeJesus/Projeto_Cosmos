@@ -304,11 +304,73 @@ body {
     height: 100vh;
 }
 
+.forms-cadastro h1 {
+    margin-bottom: 6%;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    margin-left: 15%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.form-group label {
+    font-size: 15px;
+}
+
+.form-group input {
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid #ccc;
+    padding: 5px;
+    margin: 0;
+    width: 170%;
+    box-sizing: border-box;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.form-group select {
+    margin-top: 30px;
+    border: none;
+    outline: none;
+    width: 170%;
+    padding: 8px;
+    font-family: 'Open Sans', sans-serif;
+}
+
 .forms-cadastro p {
     margin-bottom: 30px;
     color: white;
     font-family: 'Open Sans', sans-serif;
     margin-left: 110px;
+    font-size: 15px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.forms-cadastro p::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color:#0D3E89;
+    transform-origin: bottom;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+}
+
+.forms-cadastro p:hover::after {
+    transform: scaleX(1);
 }
 
 .forms-cadastro a {
@@ -328,43 +390,114 @@ body {
     margin-left: 110px;
 }
 
-.forms-cadastro h1 {
-    margin-bottom: 6%;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 400;
-    margin-left: 15%;
+/*Login*/
+.container-login {
+    display: flex;
+    color: white;
 }
 
-.form-group {
+.imagem-login {
+    background-image: url('../assets/via_lactea.png');
+    width: 45vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+.forms-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 45vw;
+    height: 100vh;
+}
+
+.forms-login h1 {
+    margin-bottom: 15%;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    margin-left: 18%;
+    font-size: 40px;
+}
+
+.form-group-login {
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
     font-family: 'Open Sans', sans-serif;
 }
 
-.form-group label {
+.form-group-login label {
     font-size: 20px;
 }
 
-.form-group input {
+.form-group-login input {
     border: none;
     background-color: transparent;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 2px solid #ccc;
     padding: 5px;
     margin: 0;
     width: 170%;
     box-sizing: border-box;
     outline: none;
     color: white;
-    font-size: 15px;
+    font-size: 18px;
     margin-top: 10px;
 }
 
-.form-group select {
+.form-group-login select {
     margin-top: 30px;
     border: none;
     outline: none;
     width: 170%;
     padding: 8px;
     font-family: 'Open Sans', sans-serif;
+}
+
+.forms-login p {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 120px;
+    font-size: 15px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.forms-login p::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color:#0D3E89;
+    transform-origin: bottom;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+}
+
+.forms-login p:hover::after {
+    transform: scaleX(1);
+}
+
+.forms-login a {
+    text-decoration: none;
+}
+
+.forms-login button {
+    background-color: #0D3E89;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    font-family: 'Open Sans', sans-serif;
+    width: 115px;
+    height: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 120px;
 }
