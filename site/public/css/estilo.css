@@ -252,7 +252,7 @@ body {
     margin-top: 30px;
 }
 
-/*SOBRE A AUTORA*/
+/*Sobre a Autora*/
 .container-principal-sobre-autora {
     background-image: linear-gradient(rgba(0, 0, 0, .10), rgba(0, 0, 0, .10)100%), url(../assets/Ceu_Noturno_Montanhas.png);
     background-repeat: no-repeat;
@@ -263,7 +263,7 @@ body {
 }
 
 .conteudo-principal-sobre-autora {
-    margin-top: 5%;
+    margin-top: 2%;
     color: white;
     font-size: 18px;
     display: flex;
@@ -276,8 +276,20 @@ body {
 }
 
 .container-imagem-autora {
-    width: 200px;
-    height: 200px;
+    width: 25vw;
+    height: 50vh;
+    background-color:#5271FF;
+    margin-left: 5%;
+}
+
+.conteudo-sobre-autora-txt {
+    width: 30vw;
+    height: 50vh;
+    text-align: justify;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 2%;
+    margin-left: 50%;
 }
 
 /*Cadastro*/
