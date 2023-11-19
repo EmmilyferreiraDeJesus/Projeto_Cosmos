@@ -299,6 +299,20 @@ body {
 }
 
 .imagem-cadastro {
+    background-image: url('../assets/via_lactea.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logo {
+    width: 150px;
+    height: 85px;
+    margin-top: 10%;
+    margin-left: 10%;
+    cursor: pointer;
+}
+
+.imagem-cadastro {
     width: 45vw;
     height: 100vh;
 }
@@ -403,6 +417,12 @@ body {
 .container-login {
     display: flex;
     color: white;
+}
+
+.imagem-login {
+    background-image: url('../assets/via_lactea.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .imagem-login {
