@@ -53,12 +53,10 @@ body::-webkit-scrollbar-thumb {
     font-size: 20px;
     cursor: pointer;
     font-family: 'Open Sans', sans-serif;
-    ;
 }
 
 .email :hover {
     color: #5271FF;
-    ;
 }
 
 .email a {
@@ -361,18 +359,18 @@ body::-webkit-scrollbar-thumb {
 }
 
 .imagem-cadastro {
-    background-image: url('../assets/via_lactea.png');
+    background-image: url('../assets/pexels-cliford-mervil-2469122.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     width: 45vw;
     height: 100vh;
 }
 
-.logo {
-    width: 150px;
-    height: 85px;
-    margin-top: 10%;
-    margin-left: 10%;
+.logo-cadastro {
+    width: 110px;
+    height: 65px;
+    margin-top: 5%;
+    margin-left: 180%;
     cursor: pointer;
 }
 
@@ -478,19 +476,18 @@ body::-webkit-scrollbar-thumb {
 }
 
 .imagem-login {
-    background-image: url('../assets/via_lactea.png');
+    background-image: url('../assets/pexels-cliford-mervil-2469122.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 45vw;
     height: 100vh;
 }
 
-.logo {
-    width: 150px;
-    height: 85px;
-    margin-top: 10%;
-    margin-left: 10%;
-    cursor: pointer;
+.logo-login {
+    width: 110px;
+    height: 65px;
+    margin-top: 18%;
+    margin-left: 180%;
 }
 
 .forms-login {
