@@ -14,6 +14,18 @@ body {
     overflow-x: hidden;
 }
 
+body::-webkit-scrollbar {
+    width: 12px;
+}
+  
+body::-webkit-scrollbar-track {
+    background: white;
+}
+  
+body::-webkit-scrollbar-thumb {
+    background-color: #0D0B09;       
+}
+
 /*HOME*/
 
 /*Container com a imagem principal*/
@@ -85,6 +97,26 @@ body {
     color: white;
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.header .container li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #0D3E89;
+    transform-origin: bottom;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+}
+
+.header .container li a:hover::after {
+    transform: scaleX(1);
 }
 
 /*Conteudo do container principal*/
@@ -162,6 +194,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     color: white;
     font-family: 'Open Sans', sans-serif;
     font-style: italic;
@@ -174,7 +207,7 @@ body {
     font-size: 22px;
 }
 
-/*Seção fique por dentros*/
+/*Seção fique por dentro*/
 .container-fique-por-dentro {
     margin-top: 15%;
     margin-left: 10%;
@@ -185,7 +218,6 @@ body {
 .container-fique-por-dentro h1 {
     margin-bottom: 45px;
     color: #5271FF;
-    ;
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
     font-size: 40px;
@@ -196,11 +228,41 @@ body {
     color: white;
     display: flex;
     gap: 10%;
+    text-align: justify;
+    width: 100%;
 }
 
-.conteudo-fique-por-dentro-text {
-    text-align: justify;
+.conteudo-fique-por-dentro-txt {
     width: 50%;
+}
+
+.container-fique-por-dentro p {
+    margin-bottom: 5%;
+}
+
+.container-fique-por-dentro a {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.container-fique-por-dentro a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #0D3E89;
+    transform-origin: bottom;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+}
+
+.container-fique-por-dentro a:hover::after {
+    transform: scaleX(1);
 }
 
 .conteudo-fique-por-dentro img {
@@ -212,8 +274,7 @@ body {
 .rodape {
     width: 100vw;
     height: 40vh;
-    background-image: url(../assets/Montanhas_Rodapé.png);
-    background-repeat: no-repeat;
+    background-color: #0D0B09;
     display: flex;
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
@@ -222,6 +283,7 @@ body {
 
 .rodape a {
     text-decoration: none;
+    color: white;
     margin-top: 5%;
     margin-left: 2%;
 }
@@ -278,7 +340,7 @@ body {
 .container-imagem-autora {
     width: 25vw;
     height: 50vh;
-    background-color:#5271FF;
+    background-color: #5271FF;
     margin-left: 5%;
 }
 
@@ -302,6 +364,8 @@ body {
     background-image: url('../assets/via_lactea.png');
     background-repeat: no-repeat;
     background-size: cover;
+    width: 45vw;
+    height: 100vh;
 }
 
 .logo {
@@ -311,12 +375,6 @@ body {
     margin-left: 10%;
     cursor: pointer;
 }
-
-.imagem-cadastro {
-    width: 45vw;
-    height: 100vh;
-}
-
 
 .forms-cadastro {
     display: flex;
@@ -386,7 +444,7 @@ body {
     left: 0;
     width: 100%;
     height: 3px;
-    background-color:#0D3E89;
+    background-color: #0D3E89;
     transform-origin: bottom;
     transform: scaleX(0);
     transition: transform 0.3s ease-out;
@@ -423,11 +481,16 @@ body {
     background-image: url('../assets/via_lactea.png');
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.imagem-login {
     width: 45vw;
     height: 100vh;
+}
+
+.logo {
+    width: 150px;
+    height: 85px;
+    margin-top: 10%;
+    margin-left: 10%;
+    cursor: pointer;
 }
 
 .forms-login {
@@ -500,7 +563,7 @@ body {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color:#0D3E89;
+    background-color: #0D3E89;
     transform-origin: bottom;
     transform: scaleX(0);
     transition: transform 0.3s ease-out;
