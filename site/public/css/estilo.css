@@ -325,7 +325,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .conteudo-principal-sobre-autora {
-    margin-top: 2%;
+    margin-top: 5%;
     color: white;
     font-size: 18px;
     display: flex;
@@ -641,4 +641,26 @@ body::-webkit-scrollbar-thumb {
     width: 50%;
     text-align: justify;
     margin-top: 5%;
+}
+
+/*Dashboard*/
+
+canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+
+.container-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
+}
+
+.chart-itens {
+    width: 35vw;
+    height: 45vh;
+    padding-left: 20px;
 }

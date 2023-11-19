@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Link CSS-->
+    <link rel="stylesheet" href="../css/estilo.css">
+    <!--Link Google Icons-->
+    <link rel="shortcut icon" href="../assets/LOGOTIPO.png" type="image/x-icon">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Cosmos | Dashboard</title>
+    <!--Link ChartJs-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+</head>
+
+<body>
+
+    <!--Container com a imagem principal e header-->
+    <div class="container-principal-sobre-autora">
+
+        <div class="header">
+            <div class="container">
+
+                <p class="email">
+                    <span class="material-symbols-outlined">mail</span>
+                    <a href="#">emmily.ferreira@spetch.school</a>
+                </p>
+
+                <a href="index.html"><img class="logo-blog" src="../assets/LOGOTIPO.png" alt="Logo Cosmos"></a>
+
+                <div class="navbar">
+                    <ul>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="conteudo-principal-sobre-autora">
+
+                <h1>Painel Geral</h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container-chart">
+
+        <div class="chart-itens">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <div class="chart-itens">
+            <canvas id="myChart2"></canvas>
+        </div>
+
+        <div class="chart-itens">
+            <canvas id="myChart3"></canvas>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Armazem 1',
+                data: [64, 66, 59, 68, 67, 63],
+                backgroundColor: '#ff6384',
+                borderWidth: 1,
+            }, {
+                label: 'Armazem 2',
+                data: [67, 64, 60, 62, 66, 58],
+                backgroundColor: '#36a0e8',
+                borderWidth: 1
+            }]
+        },
+
+        options: {
+
+
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Tendencia de umidade média dos armazens ao longo do ano',
+                    color: 'white',
+                    font: {
+                        size: 13,
+                        family: 'Open Sans',
+                    },
+                },
+
+                legend: {
+                    labels: {
+                        color: 'white',
+                    }
+                }
+            },
+
+            scales: {
+
+                x: {
+
+                    ticks: {
+                        color: 'white'
+                    },
+
+                    title: {
+                        display: true,
+                        text: 'Mês',
+                        color: 'white',
+                        font: {
+                            size: 13,
+                            family: 'Open Sans',
+                        },
+                    }
+                },
+
+                y: {
+
+                    ticks: {
+                        color: 'white'
+                    },
+
+                    title: {
+                        display: true,
+                        text: 'Umidade',
+                        color: 'white',
+                        font: {
+                            size: 13,
+                            family: 'Open Sans',
+                        },
+                    },
+
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const ctx2 = document.getElementById('myChart2');
+
+    new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [{
+                label: 'Temperatura',
+                data: [30, 29, 28, 25, 22, 23],
+                backgroundColor: '#ff6384',
+                borderColor: '#ff6384',
+                borderWidth: 2
+            }, {
+                label: 'Umidade',
+                data: [80, 82, 80, 85, 80, 83],
+                backgroundColor: '#36a0e8',
+                borderColor: '#36a0e8',
+                borderWidth: 2
+            }]
+        },
+
+        options: {
+
+
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Tendencia de umidade média dos armazens ao longo do ano',
+                    color: 'white',
+                    font: {
+                        size: 13,
+                        family: 'Open Sans',
+                    },
+                },
+
+                legend: {
+                    labels: {
+                        color: 'white',
+                    }
+                }
+            },
+
+            scales: {
+
+                x: {
+
+                    ticks: {
+                        color: 'white'
+                    },
+
+                    title: {
+                        display: true,
+                        text: 'Mês',
+                        color: 'white',
+                        font: {
+                            size: 13,
+                            family: 'Open Sans',
+                        },
+                    }
+                },
+
+                y: {
+
+                    ticks: {
+                        color: 'white'
+                    },
+
+                    title: {
+                        display: true,
+                        text: 'Umidade',
+                        color: 'white',
+                        font: {
+                            size: 13,
+                            family: 'Open Sans',
+                        },
+                    },
+
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
+    const ctx3 = document.getElementById('myChart3');
+
+    new Chart(ctx3, {
+        type: 'pie',
+        data: {
+            labels: [
+                'Red',
+                'Blue',
+                'Yellow'],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [300, 50, 100],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4
+            }]
+        },
+
+        options: {
+
+
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Tendencia de umidade média dos armazens ao longo do ano'
+                }
+            },
+        }
+    });
+
+</script>
