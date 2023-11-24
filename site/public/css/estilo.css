@@ -26,7 +26,68 @@ body::-webkit-scrollbar-thumb {
     background-color: #0D0B09;
 }
 
-/*HOME*/
+/*Alertas de Erros cadastro e login*/
+#div_erros_login {
+    display: none
+}
+
+.alerta_erro {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card_erro {
+    display: none;
+    background-color: #fff;
+    color: black;
+    width: 230px;
+    position: fixed;
+    border-radius: 4px;
+    border: #e6005a 3px solid;
+    padding: 10px;
+    margin-right: 10%;
+}
+
+.card_erro #mensagem_erro {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.login {
+    height: var(--tamanho-login);
+    background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+    background-size: cover;
+}
+
+.card-login {
+    height: 60%;
+}
+
+.login .container {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.loading-div {
+    width: 50px;
+    display: none;
+}
+
+.loading-div img {
+    height: 50px;
+    width: 50px;
+}
+
+:root {
+    --tamanho-header: 80px;
+    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-footer: 65px;
+}
+
+/*Home*/
 
 /*Container com a imagem principal*/
 .container-principal {
@@ -727,7 +788,6 @@ body::-webkit-scrollbar-thumb {
         'wght' 400,
         'GRAD' 0,
         'opsz' 24
-    
 }
 
 .postagem p {
@@ -736,8 +796,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .postagem h1 {
-   font-size: 40px;
-   font-weight: lighter;
+    font-size: 40px;
+    font-weight: lighter;
 }
 
 
