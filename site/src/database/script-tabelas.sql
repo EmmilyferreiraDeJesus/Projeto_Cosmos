@@ -6,7 +6,7 @@ USE Cosmos;
 
 CREATE TABLE usuario (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
-nome VARCHAR(45) NOT  NULL,
+nome VARCHAR(25) NOT  NULL,
 sexo VARCHAR(10) NOT NULL,
 CONSTRAINT chkSexo CHECK (sexo IN('Feminino', 'Masculino', 'Outro')),
 email VARCHAR(100) NOT NULL,
@@ -15,9 +15,6 @@ fkIndicador INT,
 CONSTRAINT fkIndicador FOREIGN KEY (fkIndicador)
 	REFERENCES usuario (idUsuario)
 );
-
-insert usuario values 
-(null, 'fabiano', 'Feminino', 'fabiano@gmail', 1234, null);
 
 CREATE TABLE post (
 idPost INT PRIMARY KEY AUTO_INCREMENT,

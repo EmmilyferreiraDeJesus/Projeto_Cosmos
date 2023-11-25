@@ -79,14 +79,6 @@ body::-webkit-scrollbar-thumb {
     width: 50px;
 }
 
-:root {
-    --tamanho-header: 80px;
-    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-    --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-    --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-    --tamanho-footer: 65px;
-}
-
 /*Home*/
 
 /*Container com a imagem principal*/
@@ -429,27 +421,35 @@ body::-webkit-scrollbar-thumb {
 }
 
 .logo-cadastro {
-    width: 105px;
-    height: 60px;
+    width: 100px;
+    height: 55px;
     margin-top: 4%;
-    margin-left: 180%;
+    margin-left: 185%;
     cursor: pointer;
 }
 
 .forms-cadastro {
+    width: 55vw;
+}
+
+.formulario {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 45vw;
     height: 100vh;
+    margin-right: 15%;
 }
 
-.forms-cadastro h1 {
+.formulario h1 {
     margin-bottom: 4%;
     font-family: 'Oswald', sans-serif;
     font-weight: 400;
-    margin-left: 15%;
+    margin-left: 20%;
+}
+
+form {
+    width: 35%;
 }
 
 .form-group {
@@ -486,18 +486,18 @@ body::-webkit-scrollbar-thumb {
     font-family: 'Open Sans', sans-serif;
 }
 
-.forms-cadastro p {
+.formulario p {
     margin-bottom: 30px;
     color: white;
     font-family: 'Open Sans', sans-serif;
-    margin-left: 110px;
+    margin-left: 150px;
     font-size: 15px;
     position: relative;
     display: inline-block;
     padding-bottom: 10px;
 }
 
-.forms-cadastro p::after {
+.formulario p::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -510,15 +510,15 @@ body::-webkit-scrollbar-thumb {
     transition: transform 0.3s ease-out;
 }
 
-.forms-cadastro p:hover::after {
+.formulario p:hover::after {
     transform: scaleX(1);
 }
 
-.forms-cadastro a {
+.formulario a {
     text-decoration: none;
 }
 
-.forms-cadastro button {
+.formulario button {
     background-color: #0D3E89;
     color: white;
     border: none;
@@ -528,7 +528,19 @@ body::-webkit-scrollbar-thumb {
     height: 40px;
     cursor: pointer;
     font-weight: bold;
-    margin-left: 110px;
+    margin-left: 150px;
+}
+
+#erro_nome,
+#erro_email,
+#erro_senha,
+#erro_confirma_senha {
+    width: 443px;
+    margin-bottom: 5px;
+    font-family: 'Opens Sans', sans-serif;
+    font-size: 12px;
+    color: #e6005a;
+
 }
 
 /*Login*/
