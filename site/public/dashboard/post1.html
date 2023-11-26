@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!--Link CSS-->
-     <link rel="stylesheet" href="../css/estilo.css">
-     <!--Link Google Icons-->
-     <link rel="shortcut icon" href="../assets/LOGOTIPO.png" type="image/x-icon">
-     <link rel="stylesheet"
-         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="../js/sessao.js"></script>
+
+    <!--Link CSS-->
+    <link rel="stylesheet" href="../css/estilo.css">
+    <!--Link Google Icons-->
+    <link rel="shortcut icon" href="../assets/LOGOTIPO.png" type="image/x-icon">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Cosmos | Post 1</title>
 </head>
-<body>
+
+<body onload="validarSessao(), atualizarFeed()">
 
     <!--Container com a imagem principal e header-->
     <div class="container-principal-blog">
@@ -50,14 +54,42 @@
     <div class="container-postagem">
 
         <div class="postagem">
+
             <h1>Título da Postagem</h1>
             <p class="data-post-p">
                 <span class="material-symbols-outlined icon">calendar_clock</span>
                 Novembro 19, 2023 ás 17:56
             </p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius commodi iusto consequuntur ratione perferendis, tempora, in deserunt voluptatem incidunt dolor inventore distinctio dolorum! Quisquam, vel harum deserunt in quam ipsum.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius commodi iusto consequuntur ratione
+                perferendis, tempora, in deserunt voluptatem incidunt dolor inventore distinctio dolorum! Quisquam, vel
+                harum deserunt in quam ipsum.</p>
             <img src="../assets/Ceu_Noturno_Montanhas.png" alt="">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis esse dolorum non numquam officiis doloribus voluptatem earum tempora doloremque reprehenderit harum aliquid eveniet cupiditate asperiores cumque nulla, iusto dolore quo?</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis esse dolorum non numquam officiis
+                doloribus voluptatem earum tempora doloremque reprehenderit harum aliquid eveniet cupiditate asperiores
+                cumque nulla, iusto dolore quo?</p>
+
+            <div class="comentarios-postagem">
+
+                <h3>Comentarios</h3>
+
+                <div id="comentario">
+                    <div id="feed_container" class="feed-container"></div>
+                </div>
+
+                <form id="form_postagem" method="post" onsubmit="return publicar()">
+
+                    <h3>Deixe um comentário</h3>
+
+                    <label>Descrição</label>
+
+                    <textarea id="textarea_descricao" name="descricao" maxlength="300"></textarea>
+
+                    <button>Enviar</button>
+
+                </form>
+
+            </div>
+
         </div>
 
     </div>
@@ -79,6 +111,101 @@
             </div>
         </div>
     </div>
-    
+
 </body>
+
 </html>
+<script>
+
+    function limparFormulario() {
+        document.getElementById("form_postagem").reset();
+    }
+
+    function publicar() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        var idPost = 1;
+
+        var corpo = {
+            descricao: form_postagem.descricao.value
+        }
+
+        fetch(`/comentario/publicar/${idUsuario}/${idPost}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.location = "/dashboard/post1.html";
+                limparFormulario();
+                // finalizarAguardar();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar o comentario! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+
+    }
+
+    function atualizarFeed() {
+        fetch("/comentarios/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanNome = document.createElement("span");
+                        var divDescricao = document.createElement("div");
+
+                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
+                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+
+                        divPublicacao.className = "publicacao";
+                        spanNome.className = "publicacao-nome";
+                        divDescricao.className = "publicacao-descricao"
+
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(divDescricao);
+                        feed.appendChild(divPublicacao);
+                    }
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+
+
+</script>

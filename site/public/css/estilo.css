@@ -812,6 +812,46 @@ form {
     font-weight: lighter;
 }
 
+.comentarios-postagem {
+    display: flex;
+    flex-direction: column;
+}
+
+.comentarios-postagem form {
+    width: 100%;
+}
+
+.comentarios-postagem h3 {
+    font-weight: lighter;
+    margin-bottom: 30px;
+}
+
+.comentarios-postagem textarea {
+    width: 97%;
+    height: 200px;
+    resize: none;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    outline: none;
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.comentarios-postagem button {
+    background-color: #0D3E89;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    font-family: 'Open Sans', sans-serif;
+    width: 115px;
+    height: 40px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#comentario {
+    margin-bottom: 50px;
+}
 
 /*Dashboard*/
 

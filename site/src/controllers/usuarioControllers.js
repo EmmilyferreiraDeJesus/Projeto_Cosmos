@@ -18,7 +18,7 @@ function autenticar(req, res) {
                         console.log(resultadoAutenticar);
                         res.json({
                             tipo: 'usuario',
-                            id: resultadoAutenticar[0].id,
+                            id: resultadoAutenticar[0].idUsuario,
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
 
@@ -35,7 +35,7 @@ function autenticar(req, res) {
                                         // Autenticação bem-sucedida para administrador
                                         res.json({
                                             tipo: 'admin',
-                                            id: resultadoAdmin[0].idAdmin,
+                                            id: resultadoAdmin[0].idAdministrador,
                                             email: resultadoAdmin[0].email,
                                             nome: resultadoAdmin[0].nome,
                                         });

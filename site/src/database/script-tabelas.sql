@@ -23,6 +23,8 @@ email VARCHAR(100) NOT NULL,
 senha CHAR(8) NOT NULL
 );
 
+INSERT INTO administrador VALUES (null, 'Emmily',  'emmilyferreiraf946@gmail.com', '74859696');
+
 CREATE TABLE post (
 idPost INT PRIMARY KEY AUTO_INCREMENT,
 titulo VARCHAR(100) NOT NULL,
@@ -34,13 +36,13 @@ CONSTRAINT fkAdministrador FOREIGN KEY (fkAdministrador)
 
 CREATE TABLE comentario (
 idComentario INT AUTO_INCREMENT,
+descricao VARCHAR(300) NOT  NULL,
 fkUsuario INT,
 CONSTRAINT fkUsuario FOREIGN KEY (fkUsuario)
 	REFERENCES usuario (idUsuario),
 fkPost INT,
 CONSTRAINT fkPost FOREIGN KEY (fkPost)
 	REFERENCES post (idPost),
-descricao VARCHAR(100) NOT  NULL,
 PRIMARY KEY (idComentario, fkUsuario, fkPost)
 );
 
@@ -52,6 +54,20 @@ SELECT * FROM comentario;
 SELECT idUsuario, nome FROM usuario
         WHERE idUsuario NOT IN 
         (SELECT DISTINCT fkIndicador FROM usuario WHERE fkIndicador IS NOT NULL);
-
-insert into administrador values (null, 'Emmily',  'emmilyferreiraf946@gmail.com', '74859696');
+	
+SELECT 
+	c.descricao,
+    c.fkUsuario,
+    c.fkPost,
+	u.idUsuario AS idUsuario,
+	u.nome,
+	u.email,
+	u.senha,
+	p.idPost AS idPost,
+	p.titulo
+FROM comentario c
+    INNER JOIN usuario u
+	 ON c.fkUsuario = u.idUsuario
+	JOIN post p
+	 ON c.fkPost = p.idPost;
 

@@ -11,6 +11,8 @@ function autenticar(email, senha) {
 
 function autenticarAdm(email, senha) {
   var query = `SELECT idAdministrador, nome, email FROM administrador WHERE email = '${email}' AND senha = '${senha}';`;
+  
+  console.log("Executando a query SQL: \n" + query);
   return database.executar(query);
 }
 
