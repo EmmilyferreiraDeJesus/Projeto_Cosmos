@@ -4,17 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/sessao.js"></script>
+
     <!--Link CSS-->
     <link rel="stylesheet" href="../css/estilo.css">
     <!--Link Google Icons-->
     <link rel="shortcut icon" href="../assets/LOGOTIPO.png" type="image/x-icon">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Cosmos | Dashboard</title>
     <!--Link ChartJs-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <title>Cosmos | Dashboard</title>
 </head>
 
 <body>
@@ -37,7 +39,7 @@
                         <li><a href="#">Sobre</a></li>
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Dashboard</a></li>
-                        <li><a href="#">Sair</a></li>
+                        <li><a href="#" onclick="limparSessao()">Sair</a></li>
                     </ul>
                 </div>
             </div>
@@ -72,7 +74,6 @@
 
 </html>
 <script>
-
 
     const ctx = document.getElementById('myChart');
 

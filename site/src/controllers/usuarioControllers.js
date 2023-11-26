@@ -13,22 +13,47 @@ function autenticar(req, res) {
         usuarioModel.autenticar(email, senha)
             .then(
                 function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
                         res.json({
+                            tipo: 'usuario',
                             id: resultadoAutenticar[0].id,
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
-                        
+
                         });
 
-                    } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                        // Tenta autenticar como administrador
+                        usuarioModel.autenticarAdm(email, senha)
+                            .then(
+                                function (resultadoAdmin) {
+                                    if (resultadoAdmin.length === 1) {
+
+                                        console.log(`\nResultados encontrados: ${resultadoAdmin.length}`);
+                                        // Autenticação bem-sucedida para administrador
+                                        res.json({
+                                            tipo: 'admin',
+                                            id: resultadoAdmin[0].idAdmin,
+                                            email: resultadoAdmin[0].email,
+                                            nome: resultadoAdmin[0].nome,
+                                        });
+                                    } else if (resultadoAutenticar.length === 0 || resultadoAdmin.length === 0) {
+                                        // Nenhum usuário ou administrador encontrado
+                                        res.status(403).send("Email e/ou senha inválido(s)");
+                                    } else {
+                                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                                    }
+                                }
+                            ).catch(
+                                function (erro) {
+                                    console.log(erro);
+                                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                                    res.status(500).json(erro.sqlMessage);
+                                }
+                            );
+
                     }
                 }
             ).catch(

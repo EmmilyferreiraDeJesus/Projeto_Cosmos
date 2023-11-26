@@ -9,6 +9,11 @@ function autenticar(email, senha) {
     return database.executar(instrucao);
 }
 
+function autenticarAdm(email, senha) {
+  var query = `SELECT idAdministrador, nome, email FROM administrador WHERE email = '${email}' AND senha = '${senha}';`;
+  return database.executar(query);
+}
+
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrar(nome, sexo, email, senha, indicadorId) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, sexo, email, senha);
@@ -42,6 +47,7 @@ function buscarPorId(id) {
 
 module.exports = {
     autenticar,
+    autenticarAdm,
     cadastrar,
     buscarPorNome,
     buscarPorId,
