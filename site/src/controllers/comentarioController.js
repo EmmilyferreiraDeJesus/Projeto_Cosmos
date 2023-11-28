@@ -1,7 +1,9 @@
 var comentarioModel = require("../models/comentarioModel");
 
 function listar(req, res) {
-    comentarioModel.listar().then(function (resultado) {
+    var idPost = req.params.idPost;
+    
+    comentarioModel.listar(idPost).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -12,52 +14,6 @@ function listar(req, res) {
         console.log("Houve um erro ao buscar os comentários: ", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
-}
-
-function listarPorUsuario(req, res) {
-    var idUsuario = req.params.idUsuario;
-
-    comentarioModel.listarPorUsuario(idUsuario)
-        .then(
-            function (resultado) {
-                if (resultado.length > 0) {
-                    res.status(200).json(resultado);
-                } else {
-                    res.status(204).send("Nenhum resultado encontrado!");
-                }
-            }
-        )
-        .catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "Houve um erro ao buscar os comentarios: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-
-function pesquisarDescricao(req, res) {
-    var descricao = req.params.descricao;
-
-    comentarioModel.pesquisarDescricao(descricao)
-        .then(
-            function (resultado) {
-                if (resultado.length > 0) {
-                    res.status(200).json(resultado);
-                } else {
-                    res.status(204).send("Nenhum resultado encontrado!");
-                }
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao buscar os comentarios: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
 }
 
 function publicar(req, res) {
@@ -90,7 +46,5 @@ function publicar(req, res) {
 
 module.exports = {
     listar,
-    listarPorUsuario,
-    pesquisarDescricao,
     publicar
 }

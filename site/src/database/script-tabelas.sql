@@ -54,20 +54,3 @@ SELECT * FROM comentario;
 SELECT idUsuario, nome FROM usuario
         WHERE idUsuario NOT IN 
         (SELECT DISTINCT fkIndicador FROM usuario WHERE fkIndicador IS NOT NULL);
-	
-SELECT 
-	c.descricao,
-    c.fkUsuario,
-    c.fkPost,
-	u.idUsuario AS idUsuario,
-	u.nome,
-	u.email,
-	u.senha,
-	p.idPost AS idPost,
-	p.titulo
-FROM comentario c
-    INNER JOIN usuario u
-	 ON c.fkUsuario = u.idUsuario
-	JOIN post p
-	 ON c.fkPost = p.idPost;
-

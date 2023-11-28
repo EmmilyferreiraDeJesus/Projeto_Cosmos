@@ -849,8 +849,37 @@ form {
     font-weight: bold;
 }
 
+.publicacao {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.publicacao-nome {
+    font-size: 18px;
+    display: flex;
+}
+
+.publicacao-nome img{
+    margin-right: 25px;
+}
+
+.publicacao-descricao {
+    color: #c9c9c9;
+    word-wrap: break-word;
+    margin-left: 85px;
+}
+
 #comentario {
     margin-bottom: 50px;
+}
+
+.mensagem {
+    color: #c9c9c9;
+}
+
+#erro_comentario {
+    color: #e6005a;
+    margin-top: 30px;
 }
 
 /*Dashboard*/

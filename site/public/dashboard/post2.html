@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="../assets/LOGOTIPO.png" type="image/x-icon">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Cosmos | Post 1</title>
+    <title>Cosmos | Post 2</title>
 </head>
 
 <body onload="validarSessao(), atualizarFeed()">
@@ -120,7 +120,7 @@
         document.getElementById("form_postagem").reset();
     }
 
-    var idPost = 1;
+    var idPost = 2;
 
     function publicar() {
         var idUsuario = sessionStorage.ID_USUARIO;
@@ -147,7 +147,7 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.location = "/dashboard/post1.html";
+                window.location = "/dashboard/post2.html";
                 console.log("idPost em publicar:", idPost);
 
                 limparFormulario();
