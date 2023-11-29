@@ -10,7 +10,7 @@ nome VARCHAR(25) NOT  NULL,
 sexo VARCHAR(10) NOT NULL,
 CONSTRAINT chkSexo CHECK (sexo IN('Feminino', 'Masculino', 'Outro')),
 email VARCHAR(100) NOT NULL,
-senha CHAR(8) NOT NULL,
+senha VARCHAR(16) NOT NULL,
 fkIndicador INT,
 CONSTRAINT fkIndicador FOREIGN KEY (fkIndicador)
 	REFERENCES usuario (idUsuario)
@@ -20,7 +20,7 @@ CREATE TABLE administrador (
 idAdministrador INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(25) NOT  NULL,
 email VARCHAR(100) NOT NULL,
-senha CHAR(8) NOT NULL
+senha VARCHAR(16) NOT NULL
 );
 
 INSERT INTO administrador VALUES (null, 'Emmily',  'emmilyferreiraf946@gmail.com', '74859696');
