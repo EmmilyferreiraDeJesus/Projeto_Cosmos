@@ -46,10 +46,24 @@ CONSTRAINT fkPost FOREIGN KEY (fkPost)
 PRIMARY KEY (idComentario, fkUsuario, fkPost)
 );
 
+CREATE TABLE curtida (
+fkUsuario INT,
+CONSTRAINT fkUsuario_curtida FOREIGN KEY (fkUsuario)
+	REFERENCES usuario (idUsuario),
+fkPost INT,
+CONSTRAINT fkPost_curtida FOREIGN KEY (fkPost)
+	REFERENCES post (idPost),
+PRIMARY KEY (fkUsuario, fkPost)
+);
+
 SELECT * FROM usuario;
 SELECT * FROM administrador;
 SELECT * FROM post;
 SELECT * FROM comentario;
+SELECT * FROM curtida;
+
+truncate table curtida;
+truncate table comentario;
 
 SELECT idUsuario, nome FROM usuario
         WHERE idUsuario NOT IN 

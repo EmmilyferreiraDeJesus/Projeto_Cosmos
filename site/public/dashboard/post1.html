@@ -15,7 +15,9 @@
     <title>Cosmos | Post 1</title>
 </head>
 
-<body onload="validarSessao(), atualizarFeed()">
+<!-- validarSessao(), -->
+
+<body onload="atualizarFeed()">
 
     <!--Container com a imagem principal e header-->
     <div class="container-principal-blog">
@@ -68,6 +70,14 @@
                 doloribus voluptatem earum tempora doloremque reprehenderit harum aliquid eveniet cupiditate asperiores
                 cumque nulla, iusto dolore quo?</p>
 
+
+            <div class="curtida-postagem">
+                <p class="likes">
+                    <i id="botaoCurtir" onclick="curtir()" class="fa-solid fa-thumbs-up fa-2x"></i>
+                    <span id="numero_curtidas"></span>
+                </p>
+            </div>
+
             <div class="comentarios-postagem">
 
                 <h3>Comentarios</h3>
@@ -111,19 +121,104 @@
         </div>
     </div>
 
+
+
+
+    <script src="https://kit.fontawesome.com/d4c069e090.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
 <script>
 
+    var idPost = 1;
+    var idUsuario = sessionStorage.ID_USUARIO;
+
+
     function limparFormulario() {
         document.getElementById("form_postagem").reset();
     }
 
-    var idPost = 1;
+    function verificarCurtida(idUsuario, idPost) {
+        fetch(`/comentarios/verificarCurtida/${idUsuario}/${idPost}`)
+
+        console.log('Verificar Curtidas' + idPost)
+
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    return resposta.json();
+
+                } else {
+                    throw new Error('Erro ao verificar curtida');
+                }
+            })
+            .then(function (resposta) {
+                console.log('Resultado da curtida', resposta.curtiu);
+                sessionStorage.setItem(`CURTIDA_POST${idPost}`, resposta.curtiu);
+            })
+            .catch(function (erro) {
+                console.error('Erro:', erro);
+            });
+    }
+
+
+    function curtir() {
+        var jaCurtiu = sessionStorage.getItem(`curtida_${idPost}`);
+
+        if (jaCurtiu) {
+            alert("Você já curtiu esta postagem!");
+        } else {
+            // Antes de enviar a solicitação, verifica se o usuário já curtiu
+            fetch(`/comentarios/verificarCurtida/${idUsuario}/${idPost}`)
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        return resposta.json();
+                    } else {
+                        throw new Error('Erro ao verificar curtida');
+                    }
+                })
+                .then(function (resposta) {
+                    if (!resposta.curtiu) {
+                        // Se o usuário ainda não curtiu, então envie a solicitação de curtir
+                        return fetch(`/comentarios/curtir/${idUsuario}/${idPost}`, {
+                            method: "post",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                        });
+                    } else {
+                        alert("Você já curtiu este post!");
+                        return Promise.reject('Usuário já curtiu');
+                    }
+                })
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        alert("Post curtido");
+                        window.location = "/dashboard/post1.html";
+                        console.log("idCurtida realizada com sucesso");
+
+                        sessionStorage.setItem(`CURTIDA_POST${idPost}`, true);
+
+                        // Chama a função verificarCurtida para atualizar o estado no sessionStorage
+                        verificarCurtida(idUsuario, idPost);
+
+                        // finalizarAguardar();
+                    } else if (resposta.status == 404) {
+                        window.alert("Deu 404!");
+                    } else {
+                        throw new Error("Houve um erro ao tentar realizar a curtida! Código da resposta: " + resposta.status);
+                    }
+                })
+                .catch(function (erro) {
+                    console.log(`#ERRO: ${erro}`);
+                    // finalizarAguardar();
+                });
+
+            return false;
+        }
+    }
 
     function publicar() {
-        var idUsuario = sessionStorage.ID_USUARIO;
 
         var corpo = {
             descricao: form_postagem.descricao.value
@@ -169,7 +264,7 @@
     function atualizarFeed() {
         fetch(`/comentarios/listar/${idPost}`).then(function (resposta) {
 
-            console.log('Atualizar' +  idPost);
+            console.log('Atualizar' + idPost);
 
             if (resposta.ok) {
                 if (resposta.status == 204) {
@@ -194,8 +289,7 @@
                         var spanNome = document.createElement("span");
                         var divDescricao = document.createElement("div");
 
-                        // spanNome.innerHTML = "<span class=material-symbols-outlined>account_circle</span>" + publicacao.nome;
-                        spanNome.innerHTML = `<img width="60px" heigth="60px" style="border-radius: 50%;" src="../assets/galaxia4.jpeg"> ${publicacao.nome}`;
+                        spanNome.innerHTML = `<img width="60px" heigth="60px" style="border-radius: 50%;" src="${publicacao.imagem}"> ${publicacao.nome}`;
                         divDescricao.innerHTML = publicacao.descricao;
 
                         divPublicacao.className = "publicacao";
@@ -216,6 +310,26 @@
             console.error(resposta);
             // finalizarAguardar();
         });
+
+        // Incluir contagem de curtidas
+        fetch(`/comentarios/contarCurtidas/${idPost}`)
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    return resposta.json();
+                } else {
+                    throw new Error('Erro ao contar curtidas');
+                }
+            })
+            .then(function (resposta) {
+                // Exibir a contagem de curtidas na interface do usuário
+                var numeroCurtidas = resposta.numeroCurtidas;
+                var numeroCurtidasElement = document.getElementById("numero_curtidas");
+                numeroCurtidasElement.innerHTML = numeroCurtidas;
+            })
+            .catch(function (erro) {
+                console.error('Erro:', erro);
+            });
+
     }
 
 
