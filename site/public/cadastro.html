@@ -21,7 +21,7 @@
 
     <div class="login">
         <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
+            <div class="card_erro_cadastro" id="cardErro">
                 <span id="mensagem_erro"></span>
             </div>
         </div>
@@ -31,15 +31,17 @@
 
             <div class="imagem-cadastro">
 
-                <img class="logo-cadastro" src="assets/LOGOTIPO.png" alt="Logo Cosmos">
-
             </div>
 
             <div class="forms-cadastro">
 
                 <div class="formulario">
 
-                    <h1>CRIE SUA CONTA</h1>
+                    <h1>CRIE SUA CONTA
+                        <a href="index.html">
+                            <img class="logo-cadastro" src="assets/LOGOTIPO.png" alt="Logo Cosmos">
+                        </a>
+                    </h1>
 
                     <form>
 
@@ -205,21 +207,21 @@
                                                     cardErro.style.display = "block";
 
                                                     mensagem_erro.innerHTML =
-                                                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                                                        "Cadastro realizado com sucesso! <br> <br> Redirecionando para tela de Login...";
 
                                                     setTimeout(() => {
                                                         window.location = "login.html";
                                                     }, "2000");
 
                                                     limparFormulario();
-                                                    // finalizarAguardar();
+                                                    finalizarAguardar();
                                                 } else {
                                                     throw "Houve um erro ao tentar realizar o cadastro!";
                                                 }
                                             })
                                             .catch(function (resposta) {
                                                 console.log(`#ERRO: ${resposta}`);
-                                                // finalizarAguardar();
+                                                finalizarAguardar();
                                             });
 
                                         return false;
@@ -234,28 +236,28 @@
                 } else erro_email.innerHTML = "O email tem que conter .com"
             } else erro_email.innerHTML = "O email tem que conter um @"
 
-        }else erro_nome.innerHTML = "O nome deve ter no mínimo 8 caracteres"
+        } else erro_nome.innerHTML = "O nome deve ter no mínimo 8 caracteres"
     }
 
 
-        function listar() {
-            fetch("/usuarios/listar", {
-                method: "GET",
-            })
-                .then(function (resposta) {
-                    resposta.json().then((usuarios) => {
-                        usuarios.forEach((usuario) => {
-                            select_indicador.innerHTML += `<option value='${usuario.idUsuario}'>${usuario.nome}</option>`;
-                        });
+    function listar() {
+        fetch("/usuarios/listar", {
+            method: "GET",
+        })
+            .then(function (resposta) {
+                resposta.json().then((usuarios) => {
+                    usuarios.forEach((usuario) => {
+                        select_indicador.innerHTML += `<option value='${usuario.idUsuario}'>${usuario.nome}</option>`;
                     });
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
                 });
-        }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
 
-        function sumirMensagem() {
-            cardErro.style.display = "none";
-        }
+    function sumirMensagem() {
+        cardErro.style.display = "none";
+    }
 
 </script>

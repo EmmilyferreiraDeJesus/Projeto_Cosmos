@@ -9,10 +9,9 @@ function buscarUltimasMedidas(limite_linhas) {
         SELECT
         (SELECT COUNT(*) FROM usuario WHERE sexo = 'Masculino') as masculino,
         (SELECT COUNT(*) FROM usuario WHERE sexo = 'Feminino') as feminino,
-        (SELECT COUNT(*) FROM usuario WHERE sexo NOT IN ('Masculino', 'Feminino')) as outros,
-        (SELECT COUNT(*) FROM usuario) as totalUsuarios,
+        (SELECT COUNT(*) FROM usuario WHERE sexo NOT IN ('Masculino', 'Feminino')) as outros, 
         (SELECT COUNT(*) FROM usuario WHERE fkIndicador is null) as usuarios_nao_indicados,
-        (SELECT COUNT(*) FROM usuario WHERE fkIndicador is not null) as usuarios_indicados
+        (SELECT COUNT(*) FROM usuario WHERE fkIndicador is not null) as usuarios_indicados,
         LIMIT ${limite_linhas};`;
         
 
@@ -22,7 +21,6 @@ function buscarUltimasMedidas(limite_linhas) {
         (SELECT COUNT(*) FROM usuario WHERE sexo = 'Masculino') as masculino,
         (SELECT COUNT(*) FROM usuario WHERE sexo = 'Feminino') as feminino,
         (SELECT COUNT(*) FROM usuario WHERE sexo NOT IN ('Masculino', 'Feminino')) as outros,
-        (SELECT COUNT(*) FROM usuario) as totalUsuarios,
         (SELECT COUNT(*) FROM usuario WHERE fkIndicador is null) as usuarios_nao_indicados,
         (SELECT COUNT(*) FROM usuario WHERE fkIndicador is not null) as usuarios_indicados
         LIMIT ${limite_linhas};`;

@@ -28,11 +28,20 @@ INSERT INTO administrador VALUES (null, 'Emmily',  'emmilyferreiraf946@gmail.com
 CREATE TABLE post (
 idPost INT PRIMARY KEY AUTO_INCREMENT,
 titulo VARCHAR(100) NOT NULL,
-curtidas INT,
+categoria VARCHAR(45),
+CONSTRAINT chkcategoria CHECK (categoria IN('Observação Celestial', 'Exploração Espacial', 'Ciência Astronômica')),
 fkAdministrador INT,
 CONSTRAINT fkAdministrador FOREIGN KEY (fkAdministrador)
 	REFERENCES administrador (idAdministrador)
 );
+
+insert into post values
+	(null,'Os melhores livros de astronomia para iniciantes', 'Observação Celestial', 1),
+    (null,'Buracos negros podem fornecer energia', 'Exploração Espacial', 1),
+    (null,'O que é e como se forma a poeira cósmica?', 'Ciência Astronômica', 1),
+    (null,'Nasa planeja teste de mineração na Lua na próxima década', 'Exploração Espacial', 1),
+    (null,'A Seleção Natural Cosmológica de Lee Smolin', 'Ciência Astronômica', 1),
+    (null,'Lua se encontra com Júpiter após eclipse', 'Observação Celestial', 1);
 
 CREATE TABLE comentario (
 idComentario INT AUTO_INCREMENT,
@@ -43,6 +52,7 @@ CONSTRAINT fkUsuario FOREIGN KEY (fkUsuario)
 fkPost INT,
 CONSTRAINT fkPost FOREIGN KEY (fkPost)
 	REFERENCES post (idPost),
+imagem VARCHAR(30),
 PRIMARY KEY (idComentario, fkUsuario, fkPost)
 );
 
@@ -62,8 +72,11 @@ SELECT * FROM post;
 SELECT * FROM comentario;
 SELECT * FROM curtida;
 
-truncate table curtida;
+truncate table usuario;
+truncate table administrador;
+truncate table post;
 truncate table comentario;
+truncate table curtida;       
 
 SELECT idUsuario, nome FROM usuario
         WHERE idUsuario NOT IN 

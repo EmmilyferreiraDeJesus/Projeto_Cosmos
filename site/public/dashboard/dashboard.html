@@ -18,10 +18,10 @@
     <title>Cosmos | Dashboard</title>
 </head>
 
-<body onload="validarSessao()">
+<body onload="">
 
     <!--Container com a imagem principal e header-->
-    <div class="container-principal-sobre-autora">
+    <div class="container-principal-dashboard">
 
         <div class="header">
             <div class="container">
@@ -31,19 +31,16 @@
                     <a href="#">emmily.ferreira@spetch.school</a>
                 </p>
 
-                <a href="index.html"><img class="logo-blog" src="../assets/LOGOTIPO.png" alt="Logo Cosmos"></a>
+                <a href="index.html"><img class="logo-dashboard" src="../assets/LOGOTIPO.png" alt="Logo Cosmos"></a>
 
                 <div class="navbar">
                     <ul>
-                        <li><a href="#">Sobre</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Dashboard</a></li>
                         <li><a href="#" onclick="limparSessao()">Sair</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="conteudo-principal-sobre-autora">
+            <div class="conteudo-principal-dashboard">
 
                 <h1>Painel Geral</h1>
 
@@ -59,14 +56,14 @@
             <canvas id="myChartPie"></canvas>
         </div>
 
-        
+
         <div class="chart-itens">
             <canvas id="myChartDoughnut"></canvas>
         </div>
 
-        <div class="chart-itens">
+        <!-- <div class="chart-itens">
             <canvas id="myChartBar"></canvas>
-        </div>
+        </div> -->
 
     </div>
 
@@ -110,7 +107,7 @@
             datasets: [{
                 data: [],
                 fill: false,
-                backgroundColor: ['red', 'blue', 'green'],
+                backgroundColor: ['#FF93A5', 'blue', 'green'],
                 boderColor: 'white',
                 tension: 0.1
             }]
@@ -118,44 +115,44 @@
 
 
         let dadosDoughnut = {
-            labels: ['Total Usuarios', 'Não Indicados', 'Indicados'],
+            labels: ['Não Indicados', 'Indicados'],
             datasets: [{
                 data: [],
                 fill: false,
-                backgroundColor: ['red', 'blue', 'green'],
+                backgroundColor: ['gray', 'green'],
                 boderColor: 'white',
                 tension: 0.1
             }]
         };
 
 
-        var labelsBarra = [];
+        // var labelsBarra = [];
 
-        // Gráfico de Barras
-        const dadosBarras = {
-            labels: labelsBarra,
-            datasets: [{
-                label: 'Feminino',
-                data: [],
-                backgroundColor: 'red',
-                borderColor: 'white',
-                borderWidth: 1
-            },
-            {
-                label: 'Masculino',
-                data: [],
-                backgroundColor: 'blue',
-                borderColor: 'white',
-                borderWidth: 1
-            },
-            {
-                label: 'Outros',
-                data: [],
-                backgroundColor: 'green',
-                borderColor: 'white',
-                borderWidth: 1
-            }]
-        };
+        // // Gráfico de Barras
+        // const dadosBarras = {
+        //     labels: labelsBarra,
+        //     datasets: [{
+        //         label: 'Observação Celestial',
+        //         data: [],
+        //         backgroundColor: 'red',
+        //         borderColor: 'white',
+        //         borderWidth: 1
+        //     },
+        //     {
+        //         label: 'Exploração Espacial',
+        //         data: [],
+        //         backgroundColor: 'blue',
+        //         borderColor: 'white',
+        //         borderWidth: 1
+        //     },
+        //     {
+        //         label: 'Ciência Astronômica',
+        //         data: [],
+        //         backgroundColor: 'green',
+        //         borderColor: 'white',
+        //         borderWidth: 1
+        //     }]
+        // };
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
@@ -165,21 +162,25 @@
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
+
+            console.log(registro);
+
             dadosPizza.datasets[0].data.push(registro.feminino, registro.masculino, registro.outros);
 
-            dadosDoughnut.datasets[0].data.push(registro.totalUsuarios, registro.usuarios_nao_indicados, registro.usuarios_indicados);
+            dadosDoughnut.datasets[0].data.push(registro.usuarios_nao_indicados, registro.usuarios_indicados);
 
-            labelsBarra.push('');
-            dadosBarras.datasets[0].data.push(registro.feminino);
-            dadosBarras.datasets[1].data.push(registro.masculino);
-            dadosBarras.datasets[2].data.push(registro.outros);
-            
+            // labelsBarra.push('');
+            // dadosBarras.datasets[0].data.push(registro.);
+            // dadosBarras.datasets[1].data.push(registro.);
+            // dadosBarras.datasets[2].data.push(registro.);
+
             console.log(`Feminino: ${registro.feminino}`);
             console.log(`Masculino: ${registro.masculino}`);
             console.log(`Outros: ${registro.outros}`);
 
             console.log(`usuarios: ${registro.usuarios_nao_indicados}`);
             console.log(`indicados: ${registro.usuarios_indicados}`);
+
         }
 
         console.log('----------------------------------------------')
@@ -241,31 +242,31 @@
             }
         };
 
-        // Gráfico de Barras
-        const configBarras = {
-            type: 'bar',
-            data: dadosBarras,
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Postagens mais curtidas no Blog',
-                        color: 'white',
-                        font: {
-                            size: 13,
-                            family: 'Open Sans',
-                            weight: 'normal'
-                        },
-                    },
+        // // Gráfico de Barras
+        // const configBarras = {
+        //     type: 'bar',
+        //     data: dadosBarras,
+        //     options: {
+        //         plugins: {
+        //             title: {
+        //                 display: true,
+        //                 text: 'Categorias mais curtidas no Blog',
+        //                 color: 'white',
+        //                 font: {
+        //                     size: 13,
+        //                     family: 'Open Sans',
+        //                     weight: 'normal'
+        //                 },
+        //             },
 
-                    legend: {
-                        labels: {
-                            color: 'white',
-                        }
-                    },
-                },
-            }
-        };
+        //             legend: {
+        //                 labels: {
+        //                     color: 'white',
+        //                 }
+        //             },
+        //         },
+        //     }
+        // };
 
         // Adicionando gráfico criado em div na tela
         let myChartPie = new Chart(
@@ -278,10 +279,10 @@
             configDoughnut
         );
 
-        let myChartBar = new Chart(
-            document.getElementById(`myChartBar`),
-            configBarras
-        );
+        // let myChartBar = new Chart(
+        //     document.getElementById(`myChartBar`),
+        //     configBarras
+        // );
     }
 
 </script>
