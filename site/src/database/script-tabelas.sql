@@ -76,8 +76,4 @@ truncate table usuario;
 truncate table administrador;
 truncate table post;
 truncate table comentario;
-truncate table curtida;       
-
-SELECT idUsuario, nome FROM usuario
-        WHERE idUsuario NOT IN 
-        (SELECT DISTINCT fkIndicador FROM usuario WHERE fkIndicador IS NOT NULL);
+truncate table curtida;
